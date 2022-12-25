@@ -44,7 +44,7 @@ public class TransactionServiceImpl implements TransactionService {
 
         ProductEntity productEntity = productRepository.findById(transactionEntity.getProductId())
                 .orElseThrow(() -> new BadRequestException("Produk dengan Id " + transactionEntity.getProductId() +
-                        "Tidak Ditemukan"));
+                        " Tidak Ditemukan"));
 
         UserEntity userEntity = userRepository.findById(transactionEntity.getUserId())
                 .orElseThrow(() -> new BadRequestException("User dengan Id " + transactionEntity.getUserId() + ", Tidak Ditemukan."));
@@ -107,12 +107,12 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public String delete(Long transactionId) {
-        if (transactionRepository.existsById(transactionId)){
-            transactionRepository.deleteById(transactionId);
-            return "Transaction dengan Id" + transactionId + " SUKSES DIHAPUS";
-        } else {
-            return "Transaction dengan Id" + transactionId + " Tidak Ada";
-        }
+        TransactionEntity transactionEntity = transactionRepository.findById(transactionId).orElseThrow(() -> new BadRequestException(
+                "Transaction dengan Id " + transactionId + " Tidak Ditemukan"
+        ));
+
+        transactionRepository.deleteById(transactionEntity.getTransactionId());
+        return "Transaction dengan ID " + transactionId + " SUKSES DIHAPUS";
     }
 
     @Override
