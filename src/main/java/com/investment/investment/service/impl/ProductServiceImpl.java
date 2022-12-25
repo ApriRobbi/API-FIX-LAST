@@ -29,7 +29,21 @@ public class ProductServiceImpl implements ProductService {
 
         categoryRepository.findById(productEntity.getCategoryEntity().getCategoryId())
                 .orElseThrow(() -> new BadRequestException("Kategory Tidak ada"));
-
+        if (productEntity.getProductName() == null){
+            throw new BadRequestException("Nama Produk Harus Diisi");
+        }
+        if (productEntity.getProductCode() == null){
+            throw new BadRequestException("Produk CODE Harus Diisi");
+        }
+        if (productEntity.getProductDescription() == null){
+            throw new BadRequestException("Produk Description Harus Diisi");
+        }
+        if (productEntity.getCategoryEntity().getCategoryId() == null){
+            throw new BadRequestException("Category Harus Diisi");
+        }
+        if (productEntity.getMinimumBuyAmount() == null){
+            throw new BadRequestException("Harga Harus Dimasukan");
+        }
         return productRepository.save(productEntity);
     }
 
