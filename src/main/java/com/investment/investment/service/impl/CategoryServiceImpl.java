@@ -8,6 +8,7 @@ import com.investment.investment.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
 import java.util.List;
 
@@ -42,7 +43,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryMapper> findAllByCategoryId(Long categoryId) {
-        return categoryRepository.findAllByCategoryId(categoryId);
+        List<CategoryMapper> result = categoryRepository.findAllByCategoryId(categoryId);
+        if (result.size() > 0){
+            return result;
+        } else {
+        throw new BadRequestException("Category Id tidak ditemukan.");
+        }
     }
 
     @Override

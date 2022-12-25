@@ -9,9 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface WatchlistRepository extends JpaRepository<WatchlistEntity, Long> {
-
-//    List<WatchlistEntity> findByUserId(Long userId);
-
     @Query(value = "SELECT " +
             "wl.watchlist_id as watchlistId,\n" +
             "wl.user_entity_user_id as userId,\n" +

@@ -54,7 +54,6 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         userEntity.setPhoneNumber(registerDto.getPhoneNumber());
 
         userEntity = userRepository.save(userEntity);
-
         apiResponse.setData(userEntity);
 
         return apiResponse;
