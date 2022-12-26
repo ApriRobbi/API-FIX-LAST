@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "holding")
-public class HoldingEntity implements Serializable {
+public class HoldingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

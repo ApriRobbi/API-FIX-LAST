@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -52,6 +53,7 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         userEntity.setEmail(registerDto.getEmail());
         userEntity.setPassword(registerDto.getPassword());
         userEntity.setPhoneNumber(registerDto.getPhoneNumber());
+        userEntity.setWallet(BigDecimal.valueOf(0));
 
         userEntity = userRepository.save(userEntity);
         apiResponse.setData(userEntity);

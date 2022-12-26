@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class WatchlistEntity implements Serializable {
+public class WatchlistEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

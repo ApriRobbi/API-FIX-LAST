@@ -25,6 +25,6 @@ public class TopUpWalletServiceImpl implements TopUpWalletService {
         }
 
         userRepository.save(userEntity);
-        return "Selamat, anda telah berhasil melakukan Top Up. Saldo Anda Sekarang adalah Rp." + userEntity.getWallet();
+        return "Selamat, " + userEntity.getFullName() + " anda telah berhasil melakukan Top Up. Saldo Anda Sekarang adalah Rp." + userEntity.getWallet();
     }
 }

@@ -7,10 +7,10 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
-public class ProductEntity implements Serializable {
+public class ProductEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
     @Column(name = "product_name")
     private String productName;

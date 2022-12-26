@@ -23,7 +23,7 @@ class ProductRepositoryTest {
 
     @Test
     void existsByProductNameNotSuccess(){
-        Boolean exists = productRepository.existsByProductName("Bank apaan");
+        Boolean exists = productRepository.existsByProductName("Bank Test");
         assertFalse(exists);
     }
 }
