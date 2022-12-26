@@ -30,10 +30,6 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
 
         UserEntity userEntity = new UserEntity();
 
-        if (userRepository.existsByEmail(registerDto.getEmail())) {
-            throw new BadRequestException("Email " + registerDto.getEmail() + " Sudah Terdaftar");
-        }
-
         if (!StringUtils.hasText(registerDto.getFullName())){
             throw new BadRequestException("Full Name Harus Diisi");
         }
@@ -48,6 +44,9 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
         }
         if (!StringUtils.hasText(registerDto.getPhoneNumber())){
             throw new BadRequestException("Phone Number Harus Diisi");
+        }
+        if (userRepository.existsByEmail(registerDto.getEmail())) {
+            throw new BadRequestException("Email " + registerDto.getEmail() + " Sudah Terdaftar");
         }
         userEntity.setFullName(registerDto.getFullName());
         userEntity.setEmail(registerDto.getEmail());
